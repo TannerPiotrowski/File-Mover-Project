@@ -10,4 +10,9 @@ print(files)
 for file in files:
     src_path = os.path.join(filesFrom, file)
     dest_path = os.path.join(filesTo, file)
-    shutil.move(src_path, dest_path)
+
+    if os.path.exists(dest_path):
+        print(f"File {file} already exists in the destination folder. Skipping.")
+    else:
+        shutil.move(src_path, dest_path)
+        print(f"Moved {file} to {filesTo}")
